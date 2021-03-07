@@ -1,0 +1,85 @@
+<body>
+  <div class="main" id="main">
+
+    <h2>Tasks...</h2>
+    <div style="padding: 20px;" >
+
+        <div *ngIf="!addTask==true" (click)="AddTask()" id="task"><i class="fa fa-plus" aria-hidden="true" style="padding-bottom: 20px;"></i> Add a task</div>
+
+      <div *ngIf="addTask== true">
+        <input type="text"  maxlength="100" class="form-control" formControlName="title"
+        placeholder=" {{ 'Title '  }}" (keydown.enter)="SaveTitle($event)">
+      </div>
+
+      <div >
+
+        <ul style="list-style-type:circle" *ngFor="let person of list" (click)="openNav(person)" >
+<li>{{person.title}} </li><hr>
+        </ul>
+      </div>
+    </div>
+
+
+
+<div  class="card">
+  <h2>Completed....</h2>
+
+  <ul style="list-style-type:circle" *ngFor="let person of listCompleted"  >
+    <li>{{person.title}} </li><hr>
+            </ul>
+  </div>
+   </div>
+
+
+   <div class="rightside">
+    <div id="mySidebar" class="sidebarright">
+   <div class="card">
+<div>
+  <i class="dot" [ngClass]="{'active': isCompleted}" (click)="MarkCompleted(id)"></i>
+  <i class="fa fa-ravelry" aria-hidden="true" ></i>  {{title}}
+  <i class="fa fa-star-o" aria-hidden="true" style="float:right;"  [ngClass]="{'active': isActive}" (click)="saveImportant(id)" ></i>
+
+  <div class="step">
+    <div *ngIf="!addSteps==true" (click)="addStep()" id="task"><i class="fa fa-plus" aria-hidden="true" style="padding-bottom: 20px;"></i> Add Step</div>
+    <div *ngIf="addSteps== true">
+      <input type="text"  maxlength="100" class="form-control" formControlName="title"
+      placeholder=" {{ 'step '  }}" (keydown.enter)="saveStep($event)">
+
+
+    </div>
+
+  </div>
+  <div>
+    <ul  *ngFor="let step of stepsAlll"  >
+      <li>{{step.title}}<div class="fa fa-times" (click)="deleteStep(step)" aria-hidden="true" style="float: right;" ></div></li><hr>
+              </ul>
+  </div>
+</div>
+   </div>
+   <div style="margin-top: 10px;"   class="card">
+    <label>Due Date</label>
+    <input type="text" class="form-control " [(ngModel)]="selectedDueDate" placeholder="Choose a Date"
+ bsDatepicker (change)="onSelectedDate(selectedDueDate)" bsDatepicker #dp="bsDatepicker" [minDate]="minDate" >
+ <button class="btn btn-primary" (click)="onSelectedDate(selectedDueDate)"> Save</button>
+<!-- <ul *ngIf=showDateDropdown>
+  <li>
+    <label > <i class="fa fa-calendar" aria-hidden="true"></i>Add Due Date</label>
+    <select class="form-control" (change)="onSelectedDueDate($event.target.value,$event.target.selectedOptions[0].label)"
+     [(ngModel)]="selectedDueDate" >
+      <option *ngFor="let item of DueDate" [value]="item.id">{{item.title}}
+
+      </option>
+
+
+    </select>
+  </li>
+</ul>
+<ng-container *ngIf=datepicker >
+<input class="form-control myDatePicker"
+ [(ngModel)]="selectedDueDate" bsDatepicker (onclick)="onSelectedDate(selectedDueDate)" >
+</ng-container> -->
+   </div>
+    </div>
+   </div>
+</body>
+

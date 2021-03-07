@@ -1,0 +1,22 @@
+<div class="control-section">
+  <div class="body">
+
+          <div class="col-lg-12 col-sm-12 col-md-12">
+              <!-- main-content declaration -->
+              <div  id="maintext">
+                  <div class="sidenav">
+                    <tbody>
+                      <tr *ngFor="let menu of sidebars" (click)="menuClick(menu.id)" style="color:blue" >
+                         <td >{{menu.title }}<label id="count"> {{menu.count}}</label></td>
+
+
+                      </tr>
+                    </tbody>
+
+                  </div>
+
+              </div>
+          </div>
+
+  </div>
+</div>

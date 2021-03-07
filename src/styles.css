@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/perfect-scrollbar/css/perfect-scrollbar.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+/* @import "assets/app/vendors/css/tables/datatable/datatables.min.css"; */
+/* @import "assets/app/fonts/feather/style.min.css"; */
+@import "assets/app/fonts/font-awesome/css/font-awesome.min.css";
+ @import "assets/app/fonts/flag-icon-css/css/flag-icon.min.css";
+ @import "~@ng-select/ng-select/themes/default.theme.css";
+/* @import "../node_modules/icheck/skins/square/green.css";
+@import "../node_modules/icheck/skins/square/blue.css"; */
+/* @import "../node_modules/icheck/skins/square/blue-2x.css"; */
+/* @import "../node_modules/ngx-toastr/toastr.css"; */
+
+
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+@import '~ngx-toastr/toastr';
+
+/* @import "~@ng-select/ng-select/themes/default.theme.css"; */
+/* @import "../node_modules/angular-tree-component/dist/angular-tree-component.css"; */
+/* @import "../node_modules/datatables.net-select-dt/css/select.dataTables.css"; */
+/* @import "assets/css/app.css"; */
+/* @import "assets/app/vendors/css/tables/datatable/select.dataTables.min.css"; */
+/* @import "assets/app/vendors/css/tables/extensions/dataTables.checkboxes.css"; */
+/* @import "assets/app/vendors/css/forms/selects/select2.min.css";
+@import "assets/app/css/core/colors/palette-tooltip.css";
+@import "assets/app/vendors/css/tables/extensions/buttons.dataTables.min.css"; */
+
+
+/* DataTable */
+.dataTables_empty {
+  display: none;
+}
+.no-data-available {
+  text-align: center;
+}

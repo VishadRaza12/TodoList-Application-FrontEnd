@@ -1,0 +1,10 @@
+{
+  "/api/*": {
+      "target": "http://localhost:9090",
+      "secure": "false",
+      "loglevel": "debug",
+      "proxyTimeout": 300000,
+      "onProxyReq": "(proxyReq, req, res) => req.setTimeout(300000)"
+  }
+
+}

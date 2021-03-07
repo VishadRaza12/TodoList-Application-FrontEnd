@@ -1,0 +1,94 @@
+
+<div style="position: absolute;right:231px;top:50px" (click)="openModal(PositionsModalTemplate,'')">Create Obligor
+   <i (click)="openModal(PositionsModalTemplate,'')"
+   style="color:#00b5b8;font-size:initial;"
+   class="fa fa-plus"></i>
+  </div>
+  <div div class="content-body">
+  <div class="row" style="padding-top: 10%;">
+    <div class="col-12">
+        <div class="card">
+     <!--Card Body Starts Here-->
+            <div class="card-content collapse show">
+                <div class="card-body card-dashboard">
+                    <div class="table-responsive">
+  <table datatable [dtOptions]="dtOptions" class="row-border hover" [dtTrigger]="dtTrigger">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Attachment</th>
+            <th>DueDate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of list" (click)="openModal(PositionsModalTemplate,person.id)">
+            <td>{{ person.id }}</td>
+            <td>{{ person.title }}</td>
+            <td>{{ person.attachment }}</td>
+            <td>{{ person.dueDate }}</td>
+        </tr>
+        <tr *ngIf="list?.length == 0">
+            <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+   <ng-template #PositionsModalTemplate>
+    <form type="post" (ngSubmit)="onPostFormSubmit(PositionsForm.getRawValue(),PositionsForm.valid)"
+     [formGroup]="PositionsForm">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ 'Tasks' }}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <fieldset class="form-group floating-label-form-group">
+          <label for="id">{{ 'ID ' }}</label>
+          <input type="text"  maxlength="100" autocomplete="off" class="form-control" disabled formControlName="id"
+          placeholder=" {{ 'ID '}}">
+        </fieldset>
+
+        <fieldset class="form-group floating-label-form-group">
+          <label for="dueDate">{{ 'dueDate ' }}</label>
+          <!-- <input type="text"  maxlength="25" class="form-control" formControlName="dueDate" [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }"
+          placeholder=" {{ 'dueDate ' }}"> -->
+          <input type="text"   [bsConfig]="{ dateInputFormat: 'YYYY MM Do',customTodayClass: 'custom-today-class' }"
+            placeholder="Choose date"  bsDatepicker [minDate]="minDate"
+            class="form-control" formControlName="dueDate"
+   >
+   <!-- [bsConfig]="{dateInputFormat: dateFormatVar,customTodayClass: 'custom-today-class'}" -->
+          <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+              <div *ngIf="f.dueDate.errors.required">{{ 'dueDate is required  ' }}</div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group floating-label-form-group">
+          <label for="title">{{ 'Title ' }}</label>
+          <input type="text"  maxlength="100" class="form-control" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+          placeholder=" {{ 'Title '  }}">
+          <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+              <div *ngIf="f.title.errors.required">{{ ' Title is required '  }}</div>
+          </div>
+        </fieldset>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn grey btn-outline-secondary" (click)="modalRef.hide()">{{ 'Cancel'  }}</button>
+        <button type="submit" class="btn btn-outline-primary">{{ 'Save' }}</button>
+      </div>
+    </form>
+  </ng-template>
