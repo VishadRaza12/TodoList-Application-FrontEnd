@@ -14,7 +14,8 @@
       <div >
 
         <ul style="list-style-type:circle" *ngFor="let person of list" (click)="openNav(person)" >
-<li>{{person.title}} </li><hr>
+<li>{{person.title}} </li>
+<div *ngIf="person.dueDate !== null" style="font-size: 10px; padding-bottom: 0px; padding-left: 20px;"  >{{"Due date "}}{{person.dueDate |date}}</div><hr style="margin-top: 0px;">
         </ul>
       </div>
     </div>
